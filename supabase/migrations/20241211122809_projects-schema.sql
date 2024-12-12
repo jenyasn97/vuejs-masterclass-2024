@@ -10,6 +10,5 @@ create table
     name text not null,
     slug text unique not null,
     status current_status default 'in-progress' not null,
-    collaborators text[] default array[]::text[] not null,
-    check (array_ndims(collaborators) = 1) -- Ограничение для проверки одномерного массива
-  );
+    collaborators text[] default array[]::text[] not null
+  )
