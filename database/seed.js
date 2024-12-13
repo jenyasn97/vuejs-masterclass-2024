@@ -18,7 +18,6 @@ const seedProjects = async (numEntries) => {
       collaborators: [faker.helpers.arrayElement([1, 2, 3])],
     })
   }
-  console.log(projects)
 
   const { data, error } = await supabase.from('projects').insert(projects).select()
 
