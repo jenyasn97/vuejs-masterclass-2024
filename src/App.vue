@@ -1,11 +1,7 @@
-<template>
-  <div>
-    <RouterView />
-  </div>
-</template>
-
 <script setup lang="ts">
-
+import AuthLayout from '@/components/Layout/main/AuthLayout.vue'
 </script>
 
-<style scoped></style>
+<template>
+  <AuthLayout><RouterView></RouterView></AuthLayout>
+</template>
