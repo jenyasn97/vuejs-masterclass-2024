@@ -1,6 +1,6 @@
 /* eslint-env node */
 
-import { fakerEN_US as faker } from '@faker-js/faker'
+import { fakerRU as faker } from '@faker-js/faker'
 import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
@@ -25,6 +25,7 @@ const seedProjects = async (numEntries) => {
     projects.push({
       name: name,
       slug: name.toLocaleLowerCase().replace(/ /g, '-'),
+      description: faker.lorem.paragraphs(2),
       status: faker.helpers.arrayElement(['in-progress', 'completed']),
       collaborators: faker.helpers.arrayElements([1, 2, 3]),
     })

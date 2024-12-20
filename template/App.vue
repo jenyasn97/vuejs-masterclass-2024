@@ -1,108 +1,76 @@
-<script setup lang="ts">
-import Input from '../src/components/ui/input/Input.vue'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '../src/components/ui/dropdown-menu'
-import { Avatar, AvatarFallback, AvatarImage } from '../src/components/ui/avatar'
-</script>
-
 <template>
-  <aside
-    class="flex flex-col h-screen gap-2 border-r fixed bg-muted/40 lg:w-52 w-16 transition-[width]"
-  >
-    <div class="flex h-16 items-center border-b px-2 lg:px-4 shrink-0 gap-1 justify-between">
-      <button variant="outline" size="icon" class="w-8 h-8">
-        <iconify-icon icon="lucide:menu"></iconify-icon>
-      </button>
-
-      <button variant="outline" size="icon" class="w-8 h-8">
-        <iconify-icon icon="lucide:plus"></iconify-icon>
-      </button>
-    </div>
-
-    <nav class="flex flex-col gap-2 justify-between h-full relative">
-      <div>
-        <RouterLink
-          to="/"
-          class="flex items-center gap-3 px-4 py-2 mx-2 transition-colors rounded-lg hover:text-primary justify-center lg:justify-normal text-muted-foreground"
-        >
-          <iconify-icon icon="lucide:house"></iconify-icon>
-          <span class="hidden lg:block text-nowrap">Dashboard</span>
-        </RouterLink>
-        <RouterLink
-          to="/projects"
-          class="flex items-center gap-3 px-4 py-2 mx-2 transition-colors rounded-lg hover:text-primary justify-center lg:justify-normal text-muted-foreground"
-        >
-          <iconify-icon icon="lucide:building-2"></iconify-icon>
-          <span class="hidden lg:block text-nowrap">Projects</span>
-        </RouterLink>
-        <RouterLink
-          to="/tasks"
-          class="flex items-center gap-3 px-4 py-2 mx-2 transition-colors rounded-lg hover:text-primary justify-center lg:justify-normal text-muted-foreground"
-        >
-          <iconify-icon icon="lucide:badge-check"></iconify-icon>
-          <span class="hidden lg:block text-nowrap">My Tasks</span>
-        </RouterLink>
-      </div>
-
-      <div class="border-y text-center bg-background py-3">
-        <RouterLink
-          to="/profile"
-          class="flex items-center gap-3 px-4 py-2 mx-2 transition-colors rounded-lg hover:text-primary justify-center lg:justify-normal text-muted-foreground"
-        >
-          <iconify-icon icon="lucide:user"></iconify-icon>
-          <span class="hidden lg:block text-nowrap">Profile</span>
-        </RouterLink>
-        <RouterLink
-          to="/settings"
-          class="flex items-center gap-3 px-4 py-2 mx-2 transition-colors rounded-lg hover:text-primary justify-center lg:justify-normal text-muted-foreground"
-        >
-          <iconify-icon icon="lucide:settings"></iconify-icon>
-          <span class="hidden lg:block text-nowrap">Settings</span>
-        </RouterLink>
-        <RouterLink
-          to="/signout"
-          class="flex items-center gap-3 px-4 py-2 mx-2 transition-colors rounded-lg hover:text-primary justify-center lg:justify-normal text-muted-foreground"
-        >
-          <iconify-icon icon="lucide:log-out"></iconify-icon>
-          <span class="hidden lg:block text-nowrap">Sign out</span>
-        </RouterLink>
-      </div>
-    </nav>
-  </aside>
-  <div class="flex flex-col lg:ml-52 ml-16 transition-[margin]">
-    <nav class="h-16 border-b bg-muted/40 flex gap-2 justify-between px-6 items-center">
-      <form class="relative h-fit w-full max-w-96">
-        <iconify-icon
-          class="absolute top-[50%] translate-y-[-50%] left-2.5 text-muted-foreground"
-          icon="lucide:search"
-        ></iconify-icon>
-        <Input class="w-full pl-8 bg-background" type="text" placeholder="Search ..." />
-      </form>
-      <DropdownMenu>
-        <DropdownMenuTrigger>
-          <Avatar>
-            <AvatarImage src="https://github.com/radix-vue.png" alt="@radix-vue" />
-            <AvatarFallback>CN</AvatarFallback>
+  <Table>
+    <TableRow>
+      <TableHead> Name </TableHead>
+      <TableCell> Lorem ipsum dolor sit amet. </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHead> Description </TableHead>
+      <TableCell>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad iure qui tempora ex nihil, ab
+        reprehenderit dolorem sunt veritatis perferendis? Repudiandae quis velit quasi ab natus quia
+        ratione voluptas deserunt labore sed distinctio nam fuga fugit vero voluptates placeat
+        aperiam, saepe excepturi eos harum consectetur doloremque perspiciatis nesciunt! Incidunt,
+        modi.
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHead> Assignee </TableHead>
+      <TableCell>Lorem ipsum</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHead> Project </TableHead>
+      <TableCell> Lorem ipsum. </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHead> Status </TableHead>
+      <TableCell>In progress</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHead> Collaborators </TableHead>
+      <TableCell>
+        <div class="flex">
+          <Avatar
+            class="-mr-4 border border-primary hover:scale-110 transition-transform"
+            v-for="n in 5"
+            :key="n"
+          >
+            <RouterLink class="w-full h-full flex items-center justify-center" to="">
+              <AvatarImage src="" alt="" />
+              <AvatarFallback> </AvatarFallback>
+            </RouterLink>
           </Avatar>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Team</DropdownMenuItem>
-          <DropdownMenuItem>Subscription</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </nav>
-    <main>
-      <RouterView />
-    </main>
-  </div>
+        </div>
+      </TableCell>
+    </TableRow>
+    <TableRow class="hover:bg-transparent">
+      <TableHead class="align-top pt-4"> Comments </TableHead>
+
+      <TableCell>
+        Comments cards goes in here..
+
+        <div class="flex flex-col justify-between p-3 bg-muted my-2 rounded-md">
+          <textarea
+            placeholder="Add your comment.."
+            class="w-full max-w-full overflow-y-auto prose-sm prose border rounded dark:prose-invert hover:border-muted bg-background border-muted p-3"
+          >
+          </textarea>
+          <div class="flex justify-between mt-3">
+            <Button> Comment </Button>
+            <div class="flex gap-4">
+              <button variant="ghost" @click.prevent>
+                <iconify-icon icon="lucide:paperclip"></iconify-icon>
+                <span class="sr-only">Attach file</span>
+              </button>
+              <button variant="ghost" @click.prevent>
+                <iconify-icon icon="lucide:image-up"></iconify-icon>
+
+                <span class="sr-only">Upload image</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </TableCell>
+    </TableRow>
+  </Table>
 </template>

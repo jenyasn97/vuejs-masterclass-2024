@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { usePageStore } from '@/stores/page'
 import { tasksWithProjectsQuery } from '@/utils/supaQueries'
 import { columns } from '@/utils/tableColumns/tasksColumns'
-import type { tasksWithProjects } from '@/utils/supaQueries'
+import type { TasksWithProjects } from '@/utils/supaQueries'
+import { usePageStore } from '@/stores/page'
+import { ref } from 'vue'
 import DataTable from '@/components/ui/data-table/DataTable.vue'
 
-usePageStore().pageData.title = 'Tasks page'
+usePageStore().pageData.title = 'My Tasks'
 
-const tasks = ref<tasksWithProjects | null>(null)
-
+const tasks = ref<TasksWithProjects | null>(null)
 const getTasks = async () => {
   const { data, error } = await tasksWithProjectsQuery
 
