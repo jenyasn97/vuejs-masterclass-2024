@@ -26,7 +26,7 @@ export const projectQuery = (slug: string) =>
     status,
     due_date
    )
-  `
+  `,
     )
     .eq('slug', slug)
     .single()
@@ -44,7 +44,7 @@ export const taskQuery = (id: string) => {
         name,
         slug
       )
-    `
+    `,
     )
     .eq('id', id)
     .single()

@@ -1,6 +1,6 @@
 /* eslint-env node */
 
-import { fakerRU as faker } from '@faker-js/faker'
+import { fakerEN as faker } from '@faker-js/faker'
 import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)

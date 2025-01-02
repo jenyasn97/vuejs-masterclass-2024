@@ -7,6 +7,7 @@ import Table from '@/components/ui/table/Table.vue'
 import TableCell from '@/components/ui/table/TableCell.vue'
 import TableHead from '@/components/ui/table/TableHead.vue'
 import TableRow from '@/components/ui/table/TableRow.vue'
+import { useErrorStore } from '@/stores/errors'
 import { usePageStore } from '@/stores/page'
 import { taskQuery, type Task } from '@/utils/supaQueries'
 import { ref, watch } from 'vue'
@@ -24,9 +25,9 @@ watch(
 )
 
 const getTask = async () => {
-  const { data, error } = await taskQuery(route.params.id)
+  const { data, error, status } = await taskQuery(route.params.id)
 
-  if (error) console.log(error)
+  if (error) useErrorStore().setError({ error, customCode: status })
 
   task.value = data
 }
@@ -64,7 +65,7 @@ await getTask()
         <div class="flex">
           <Avatar
             class="-mr-4 border border-primary hover:scale-110 transition-transform"
-            v-for="collab in task?.collaborators"
+            v-for="collab in task.collaborators"
             :key="collab"
           >
             <RouterLink class="w-full h-full flex items-center justify-center" to="">
